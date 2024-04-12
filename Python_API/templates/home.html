@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTech :: {{title}}</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- link bootrstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body class="d-flex flex-column" style="min-height: 100vh;">
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-scroll shadow p-2 mb-5 bg-body-tertiary bg-dark p-2 bg-opacity-25" data-mdb-navbar-init>
+          <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#">SYC</a>
+            <button class="navbar-toggler ps-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarExample01" aria-controls="#navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="d-flex justify-content-start align-items-center"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link text-light" aria-current="page" href="#">Home</a>
+                </li>
+              </ul>
+                <a href="/solicitacao"><button type="submit" class="btn btn-link text-light" style="border: none; background-color: transparent;">
+                  Solicitação
+                </button></a>       
+            </div>
+          </div>
+        </nav>
+      </header>
+
+   <main class="flex-fill" style="background-color: #0159a0;">
+    {% block conteudo %}
+
+    {% endblock %}
+   </main>
+    
+    <footer style="background-color: #3f81b7;" >   
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="col-12 col-sm-6 col-md-4 text-center text-light">
+                    &copy; 2024 - SYC
+                    <br>
+                    CNPJ 99.999.999/0001-99
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 text-center text-white ">
+                    Política de privacidade
+                    <br>
+                    Termos de uso
+                    <br>
+                    Trocas e Devoluções 
+                    <br>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 text-center text-light ">
+                    Contato pelo site 
+                    <br>
+                    SYC.ti@gmail.com.br
+                    <br>
+                    Cel: 15 99999-9999
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </footer>
+    <!-- LINK BOOTSTRAP _ JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</body>
+</html>

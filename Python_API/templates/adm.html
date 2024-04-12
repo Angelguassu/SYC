@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Usuários</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        tr:hover td {
+            background-color: #fff;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Usuários</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+        <tbody id="usuarios-table">
+        </tbody>
+    </table>
+
+    <script>
+        // Função para carregar os usuários na tabela
+        function carregarUsuarios() {
+            fetch('/usuarios')
+            .then(response => response.json())
+            .then(data => {
+                const usuariosTable = document.getElementById('usuarios-table');
+                usuariosTable.innerHTML = ''; // Limpa a tabela antes de adicionar os novos usuários
+                data.usuarios.forEach(usuario => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${usuario[0]}</td>
+                        <td>${usuario[1]}</td>
+                        <td>${usuario[2]}</td>
+                        <td>${usuario[3]}</td>
+                        <td>
+                            <button onclick="excluirCadastro(this, ${usuario[0]})">Excluir</button>
+                        </td>
+                    `;
+                    usuariosTable.appendChild(tr);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar usuários:', error));
+        }
+
+        // Função para excluir um usuário
+        function excluirCadastro(button, id) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+
+            // Chamada AJAX para excluir do banco de dados
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/excluir/" + id, true);
+            xhr.send();
+        }
+
+        // Carrega os usuários quando a página é carregada
+        window.onload = carregarUsuarios;
+    </script>
+</body>
+</html>
