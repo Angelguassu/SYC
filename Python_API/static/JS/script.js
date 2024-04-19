@@ -51,4 +51,23 @@ window.onload = function() {
   sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
   });
-  
+
+
+function confirmarExclusao(id) {
+      if (confirm("Tem certeza de que deseja excluir esta solicitação?")) {
+          window.location.href = "/excluir/" + id;
+      }
+   }
+
+
+    function mostrarFormResposta(id) {
+        var formResposta = document.getElementById("formResposta" + id);
+        // Verificar o estado atual do formulário
+        if (formResposta.style.display === "none" || formResposta.style.display === "") {
+            // Se estiver oculto, exibir o formulário
+            formResposta.style.display = "block";
+        } else {
+            // Se estiver visível, ocultar o formulário
+            formResposta.style.display = "none";
+        }
+    }

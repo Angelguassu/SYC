@@ -129,16 +129,11 @@ button:hover .arrow:before {
   height: 700px;
   border: solid #1f2124;
 }
-/*.formulario{
-
-  width: 1000px;
-  height: 800px;
-  border: solid #1f2124;
+.full-width-textarea {
+  width: 100%;
 }
-.img{
 
-  width: 1000px;
-  height: 800px;
-  border: solid #1f2124;
+.text-animado {
+font-size: 45px;
+font-weight: 300;
 }
-#
