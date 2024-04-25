@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCY - Home Usuário</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar-toggler {
+            color: #fff;
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ccc;
+        }
+        .btn-outline-light {
+            color: #fff;
+            border-color: #fff;
+        }
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: #0159a0;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necessário para posicionar o indicador */
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .card-text {
+            color: #555;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-scroll shadow p-2 mb-5" style="background-color: #0159a0;">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light" href="#">SYC</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link text-light" aria-current="page" href="/">Home</a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarExample01"
+                    aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarExample01">
+                    <form class="d-flex mx-auto my-2 my-lg-0">
+                        <input id="inputBusca" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                        <button class="btn btn-outline-light" type="button" onclick="buscar()">Pesquisar</button>
+                    </form>
+
+                    {% if is_admin %}
+                    <a href="/gestao" class="btn btn-outline-light rounded-pill border border-2">Gestão</a>
+                    {% endif %}
+                    <a href="/solicitacao" class="btn btn-outline-light rounded-pill border border-2">Solicitação</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Adicione esses scripts do Bootstrap ao final do body para garantir que eles sejam carregados corretamente -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-Ao8IZeXXTWN8bpvhix2jfnFdbtJ5Uz9rxpTuhxVcJZtSvVI8RgfU9fSAaKP5+U21" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-KtqyUzWI1cs0U1I1tnrkxIY14JfGWc3txUUOZf/RwD7EFyltr3/m5eJqexAK/khH" crossorigin="anonymous"></script>
+       
+
+    <main class="flex-fill">
+        <section class="py-5">
+            <div class="container">
+                <h1 class="text-primary mb-4 fs-2">Veja suas reclamações</h1>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    {% for solicitacao in solicitacoes %}
+                    <div class="col">
+                        <div class="card">
+                </button>
+                            <a href="/responder/{{ solicitacao[0] }}" class="badge text-light position-absolute top-0 end-0 m-3" style="background-color: #0159a0;">Em andamento</a>
+                            <div class="row g-0">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <img src="/static/IMG/soli.png" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary fs-4">{{ solicitacao[1] }}</h5>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="btn btn-outline-primary rounded-pill">Setor: {{ solicitacao[4] }}</p>
+                                            <p class="btn btn-outline-primary rounded-pill">Assunto: {{ solicitacao[5] }}</p>
+                                        </div>
+                                        <div class="border border-2 rounded m-2 p-4">
+                                            <p class="card-text"><strong>Detalhes:</strong> {{ solicitacao[6] }}</p>
+                                        </div>
+                                        {% if is_admin %}
+                                        <div class="m-2 d-flex justify-content-end">
+                                            <a href="/excluir" onclick="confirmarExclusao('{{ solicitacao[0] }}')" class="btn btn-danger me-2">Excluir</a>
+                                            <a href="/editar/{{ solicitacao[0] }}" class="btn btn-outline-danger me-2">Editar</a>
+                                            <a href="/responder/{{ solicitacao[0] }}" class="btn btn-outline-danger">Responder</a>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="/static/JS/script.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kC/xUUy9Vv6b7GfUzOy8CybPFtXCIV1pZ9TOyQ4KZzLcHvGDf4ksQr/xFwrk0B5K" crossorigin="anonymous"></script>
+
+</body>
+</html>
