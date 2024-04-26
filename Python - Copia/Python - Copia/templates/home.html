@@ -72,9 +72,7 @@
                         <button class="btn btn-outline-light" type="button" onclick="buscar()">Pesquisar</button>
                     </form>
 
-                    {% if is_admin %}
                     <a href="/gestao" class="btn btn-outline-light rounded-pill border border-2">Gestão</a>
-                    {% endif %}
                     <a href="/solicitacao" class="btn btn-outline-light rounded-pill border border-2">Solicitação</a>
                 </div>
             </div>
@@ -109,14 +107,7 @@
                                         </div>
                                         <div class="border border-2 rounded m-2 p-4">
                                             <p class="card-text"><strong>Detalhes:</strong> {{ solicitacao[6] }}</p>
-                                        </div>
-                                        {% if is_admin %}
-                                        <div class="m-2 d-flex justify-content-end">
-                                            <a href="/excluir" onclick="confirmarExclusao('{{ solicitacao[0] }}')" class="btn btn-danger me-2">Excluir</a>
-                                            <a href="/editar/{{ solicitacao[0] }}" class="btn btn-outline-danger me-2">Editar</a>
-                                            <a href="/responder/{{ solicitacao[0] }}" class="btn btn-outline-danger">Responder</a>
-                                        </div>
-                                        {% endif %}
+                                        </div>                   
                                     </div>
                                 </div>
                             </div>

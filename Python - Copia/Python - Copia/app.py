@@ -101,7 +101,7 @@ def excluir_solicitacao(id_solicitacao):
     cursor.execute('DELETE FROM solicitacoes WHERE id = ?', (id_solicitacao,))
     conn.commit()
     conn.close()
-    return redirect('/home')
+    return redirect('/adm')
 
 @app.route('/responder/<int:id_solicitacao>', methods=['POST'])
 def responder_solicitacao(id_solicitacao):
@@ -163,7 +163,7 @@ def editar_solicitacao(id_solicitacao):
                   (username, telefone, email, setor, assunto, detalhes, id_solicitacao))
         conn.commit()
         conn.close()
-        return redirect('/home')
+        return redirect('/adm')
     
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
@@ -225,7 +225,7 @@ def criar_tabela():
     conn.commit()
     conn.close()
 
-
+    
 @app.route('/solicitacao')
 def solicitacao():
     if 'username' in session:
