@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/CSS/style_adm.css">
+    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <!-- ======= Styles ====== -->
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+        .btn-outline-light {
+            color: #fff;
+            border-color: #fff;
+        }
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: #0159a0;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necessário para posicionar o indicador */
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .card-text {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="cont">
+        <div class="navigation" style=" background-color: #0159a0;">
+            <ul>
+                <li>
+                    <a href="#brand">
+                        <span class="icon" style="margin-top: 10px;">    
+                            <img src="/static/IMG/rocket-takeoff.svg" alt="" style="width: 40px;">                                         
+                        </span>
+                        <span class="title">SYC</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#dashboard">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inicio</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#customers">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Solicitações</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#help">
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#settings">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/gestao">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <span class="title">Password</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span id="sairbtn" class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+
+            
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="/static/IMG/customer01.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- ======================= Dashboard Section ================== -->
+            <section id="dashboard" class="visible">
+                    <!-- ======================= Cards ================== -->
+                    <div class="cardBox">
+                        <div class="card">
+                            <div>
+                                <div class="numbers">1,504</div>
+                                <div class="cardName">Daily Views</div>
+                            </div>
+        
+                            <div class="iconBx">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </div>
+                        </div>
+        
+                        <div class="card">
+                            <div>
+                                <div class="numbers">80</div>
+                                <div class="cardName">Sales</div>
+                            </div>
+        
+                            <div class="iconBx">
+                                <ion-icon name="cart-outline"></ion-icon>
+                            </div>
+                        </div>
+        
+                        <div class="card">
+                            <div>
+                                <div class="numbers">284</div>
+                                <div class="cardName">Comments</div>
+                            </div>
+        
+                            <div class="iconBx">
+                                <ion-icon name="chatbubbles-outline"></ion-icon>
+                            </div>
+                        </div>
+        
+                        <div class="card">
+                            <div>
+                                <div class="numbers">$7,842</div>
+                                <div class="cardName">Earning</div>
+                            </div>
+        
+                            <div class="iconBx">
+                                <ion-icon name="cash-outline"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- ================ Order Details List ================= -->
+                    <div class="details">
+                        <div class="recentOrders" style="width: 153%;">
+                            <div class="cardHeader">
+                                <h2>Veja suas reclamações</h2>
+                            </div>
+                            <a href="/my_solicitacoes">click aqui</a>
+
+                            <div class="container">
+                                {% block conteudo %}
+
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                        <!-- ================= New Customers ================ -->
+                        
+                    </div>
+                </div>
+         </div>
+                        
+                    </div>
+                </div>
+            </div>
+        
+            </section>
+
+          
+            <!-- ======================= Customers Section ================== -->
+            <section id="customers" class="hidden">
+
+                                <div class="main">
+                                    <div class="topbar">
+                                        <div class="toggle">
+                                            <ion-icon name="menu-outline"></ion-icon>
+                                        </div>
+                        
+                                        <div class="search">
+                                            <label>
+                                                <input type="text" placeholder="Search here">
+                                                <ion-icon name="search-outline"></ion-icon>
+                                            </label>
+                                        </div>
+                        
+                                        <div class="user">
+                                            <img src="/static/IMG/customer01.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <!-- ======================= Cards ================== -->
+                                    <div class="cardBox">
+                                        <div class="card">
+                                            <div>
+                                                <div class="numbers">1,504</div>
+                                                <div class="cardName">Daily Views</div>
+                                            </div>
+                        
+                                            <div class="iconBx">
+                                                <ion-icon name="eye-outline"></ion-icon>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="card">
+                                            <div>
+                                                <div class="numbers">80</div>
+                                                <div class="cardName">Sales</div>
+                                            </div>
+                        
+                                            <div class="iconBx">
+                                                <ion-icon name="cart-outline"></ion-icon>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="card">
+                                            <div>
+                                                <div class="numbers">284</div>
+                                                <div class="cardName">Comments</div>
+                                            </div>
+                        
+                                            <div class="iconBx">
+                                                <ion-icon name="chatbubbles-outline"></ion-icon>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="card">
+                                            <div>
+                                                <div class="numbers">$7,842</div>
+                                                <div class="cardName">Earning</div>
+                                            </div>
+                        
+                                            <div class="iconBx">
+                                                <ion-icon name="cash-outline"></ion-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                                    <!-- ================ Order Details List ================= -->
+                                    <div class="details">
+                                        <div class="recentOrders" style="width: 153%;">
+                                            
+                                            <div class="cardHeader">
+                                                <h2></h2>
+                                                <a href="/solicitacao" class="btn">Solicitação</a>
+                                            </div>
+
+                                            <div class="cardHeader">
+                                                <h2>Veja suas reclamações</h2>
+                                            </div>
+                        
+                                            <div class="container">
+                                                <div class="row row-cols-1 row-cols-md-2 g-4">
+                                                    {% for solicitacao in solicitacoes %}
+                                                    <div class="col">
+                                                        <div class="card mb-3">
+                                                            <div class="cardHeader"></div>
+                                                            <a href="/responder/{{ solicitacao[0] }}" class="badge text-light position-absolute top-0 end-0 m-3" style="background-color: #0159a0;">Ver resposta</a>
+                                                            <div class="row g-0">
+                                                                <div class="col-md-4 d-flex align-items-center">
+                                                                    <img src="/static/IMG/soli.png" class="img-fluid rounded-start" alt="...">
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title text-primary fs-4">{{ solicitacao[1] }}</h5>
+                                                                        <div class="d-flex justify-content-between mb-3">
+                                                                            <p class="btn btn-outline-primary rounded-pill">Setor: {{ solicitacao[4] }}</p>
+                                                                            <p class="btn btn-outline-primary rounded-pill">Assunto: {{ solicitacao[5] }}</p>
+                                                                        </div>
+                                                                        <div class="border border-2 rounded p-3">
+                                                                            <p class="card-text"><strong>Detalhes:</strong> {{ solicitacao[6] }}</p>
+                                                                        </div>                                                                                                                                       
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <!-- ================= New Customers ================ -->
+                                        
+                                    </div>
+                                </div>
+                         </div>
+            </section>
+
+            <!-- ======================= Messages Section ================== -->
+            <section id="messages" class="hidden flex-fill py-5">
+            </section>
+
+            
+
+            <!-- ======================= Help Section ================== -->
+            <section id="help" class="hidden">
+                <p>d</p>
+            </section>
+
+            <!-- ======================= Settings Section ================== -->
+            <section id="settings" class="hidden">
+                <p>e</p>
+            </section>
+
+            <!-- ======================= Password Section ================== -->
+   
+            <section id="password" class="hidden">
+        
+            </section>
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="/static/JS/adm.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- ====== Scroll to Section Script ======= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navigationLinks = document.querySelectorAll('.navigation a');
+
+            navigationLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        // Oculta todas as seções
+                        document.querySelectorAll('section').forEach(section => {
+                            section.classList.add('hidden');
+                            section.classList.remove('visible');
+                        });
+                        // Mostra apenas a seção selecionada
+                        targetSection.classList.add('visible');
+                        targetSection.classList.remove('hidden');
+                        // Rolamento suave para a seção
+                        window.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        var sairbtn = document.getElementById("sairbtn")
+        sairbtn.addEventListener('click',() => {
+            window.location.href = "/login"
+        })
+    </script>
+</body>
+
+</html>

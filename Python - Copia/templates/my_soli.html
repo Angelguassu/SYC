@@ -1,0 +1,35 @@
+
+            {% extends "home.html" %}
+            {% block conteudo %}
+            <div class="container">
+                <h1 class="text-primary mb-4 fs-2">Veja suas reclamações</h1>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    {% for solicitacao in solicitacoes %}
+                    <div class="col">
+                        <div class="card">
+                </button>
+                            <a href="/responder/{{ solicitacao[0] }}" class="badge text-light position-absolute top-0 end-0 m-3" style="background-color: #0159a0;">Responder</a>
+                            <div class="row g-0">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <img src="/static/IMG/soli.png" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary fs-4">{{ solicitacao[1] }}</h5>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="btn btn-outline-primary rounded-pill">Setor: {{ solicitacao[4] }}</p>
+                                            <p class="btn btn-outline-primary rounded-pill">Assunto: {{ solicitacao[5] }}</p>
+                                        </div>
+                                        <div class="border border-2 rounded m-2 p-4">
+                                            <p class="card-text"><strong>Detalhes:</strong> {{ solicitacao[6] }}</p>
+                                        </div>               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endblock %}
+        
